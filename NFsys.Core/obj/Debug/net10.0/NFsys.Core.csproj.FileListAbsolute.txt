@@ -1,0 +1,15 @@
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\bin\Debug\net10.0\NFsys.Core.exe
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\bin\Debug\net10.0\NFsys.Core.deps.json
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\bin\Debug\net10.0\NFsys.Core.runtimeconfig.json
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\bin\Debug\net10.0\NFsys.Core.dll
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\bin\Debug\net10.0\NFsys.Core.pdb
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\NFsys.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\NFsys.Core.AssemblyInfoInputs.cache
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\NFsys.Core.AssemblyInfo.cs
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\NFsys.Core.csproj.CoreCompileInputs.cache
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\NFsys.Core.dll
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\refint\NFsys.Core.dll
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\NFsys.Core.pdb
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\NFsys.Core.genruntimeconfig.cache
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\ref\NFsys.Core.dll
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\NFsys.Core.csproj.Up2Date
