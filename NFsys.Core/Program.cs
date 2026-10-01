@@ -14,11 +14,28 @@ namespace NFsys.Core
 
             Console.WriteLine("Insira o número de série da NF");
             Console.Write("> ");
-            string serie = Console.ReadLine();
+            string serie = Console.ReadLine()?.Trim() ?? "";
+
+            if (string.IsNullOrWhiteSpace(serie) )
+            {
+                Console.WriteLine("> Erro: série inválida.");
+                return;
+            }
 
             Console.WriteLine("Agora, insira a competência (AAAA-MM)");
             Console.Write("> ");
-            string ano_mes = Console.ReadLine().Trim();
+            string competencia = Console.ReadLine()?.Trim() ?? "";
+
+            if (!DateTime.TryParseExact(
+                competencia,
+                "yyyy-MM",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out _))
+            {
+                Console.WriteLine("> Erro: competência inválida. Utilize o formato AAAA-MM.");
+                return;
+            }
 
             string[] notas_fiscais = Directory.GetFiles(@"C:\XmlNfce", "*.xml");
 
@@ -47,17 +64,45 @@ namespace NFsys.Core
 
                     var tag_ide = xml_nf.Descendants(namespace_sefaz + "ide").FirstOrDefault();
 
-                    string tag_serie = tag_ide.Element(namespace_sefaz + "serie").Value;
-                    string tag_dhEmi = tag_ide.Element(namespace_sefaz + "dhEmi").Value.Substring(0, 7);
+                    if (tag_ide == null)
+                    {
+                        Console.WriteLine($"> Erro: XML sem a tag 'ide': '{arquivo_nota_fiscal}'");
+                        continue;
+                    }
 
-                    if (serie == tag_serie && ano_mes == tag_dhEmi)
+                    var tag_serie = tag_ide.Element(namespace_sefaz + "serie");
+                    var tag_dhEmi = tag_ide.Element(namespace_sefaz + "dhEmi");
+
+                    if (tag_serie == null || tag_dhEmi == null)
+                    {
+                        Console.WriteLine($"> Erro: XML com informações incompletas: '{arquivo_nota_fiscal}'");
+                        continue;
+                    }
+
+                    string serie_xml = tag_serie.Value;
+                    string competencia_xml = tag_dhEmi.Value.Substring(0, 7);
+
+                    if (serie == serie_xml && competencia == competencia_xml)
                     {
                         var tag_infNFe = xml_nf.Descendants(namespace_sefaz + "infNFe").FirstOrDefault();
+
+                        if (tag_infNFe == null || tag_infNFe.Attribute("Id") == null)
+                        {
+                            Console.WriteLine($"> Erro: XML sem chave de acesso: '{arquivo_nota_fiscal}'");
+                            continue;
+                        }
+
                         var chave_nf = tag_infNFe.Attribute("Id").Value.Replace("NFe", "");
 
-                        var competencia_nf = tag_dhEmi;
+                        var competencia_nf = competencia_xml;
 
                         var tag_vNF = xml_nf.Descendants(namespace_sefaz + "vNF").FirstOrDefault();
+
+                        if (tag_vNF == null)
+                        {
+                            Console.WriteLine($"> Erro: XML sem a tag 'vNF': '{arquivo_nota_fiscal}'");
+                            continue;
+                        }
 
                         decimal valor_nf = decimal.Parse(
                             tag_vNF.Value,

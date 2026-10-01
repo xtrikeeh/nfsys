@@ -13,3 +13,4 @@ C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\NFsys.Core.pdb
 C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\NFsys.Core.genruntimeconfig.cache
 C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\ref\NFsys.Core.dll
 C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\NFsys.Core.csproj.Up2Date
+C:\Users\bmols\Downloads\NFsys\NFsys.Core\obj\Debug\net10.0\NFsys.Core.sourcelink.json
