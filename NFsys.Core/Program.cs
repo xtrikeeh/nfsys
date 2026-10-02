@@ -125,16 +125,20 @@ namespace NFsys.Core
                 }
             }
 
+
             Console.WriteLine("\nProcessamento finalizado!");
 
             Console.WriteLine($"> {nf_encontradas.Count} NFs encontradas.");
 
-            var opcoes_json = new JsonSerializerOptions { WriteIndented = true };
-            string arquivo_json = JsonSerializer.Serialize(nf_encontradas, opcoes_json);
+            if (nf_encontradas.Count != 0)
+            {
+                var opcoes_json = new JsonSerializerOptions { WriteIndented = true };
+                string arquivo_json = JsonSerializer.Serialize(nf_encontradas, opcoes_json);
 
-            File.WriteAllText("envio.json", arquivo_json);
+                File.WriteAllText("envio.json", arquivo_json);
 
-            Console.WriteLine("> Arquivo 'envio.json' criado com sucesso!");
+                Console.WriteLine("> Arquivo 'envio.json' criado com sucesso!");
+            }
         }
     }
 }
