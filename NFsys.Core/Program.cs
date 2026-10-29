@@ -41,6 +41,10 @@ namespace NFsys.Core
                 .Where(arquivo =>
                 {
                     string nome_arquivo = Path.GetFileName(arquivo);
+
+                    if (nome_arquivo.Length < 44)
+                        return false;
+
                     string chave_acesso = nome_arquivo.Substring(0, 44);
 
                     return chave_acesso.Substring(20, 2) == "65" && chave_acesso.Substring(22, 3) == serie;

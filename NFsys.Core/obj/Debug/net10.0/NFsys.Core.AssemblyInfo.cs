@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NFsys.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69a8487f60219dd0183caa81cbb7aaf5443b309c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d2bf8574d2ec47d0d7535967fa770f0c25f128c")]
 [assembly: System.Reflection.AssemblyProductAttribute("NFsys.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NFsys.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
