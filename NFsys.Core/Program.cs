@@ -12,16 +12,6 @@ namespace NFsys.Core
         {
             Console.WriteLine("Bem-vindo ao NFsys\n");
 
-            Console.WriteLine("Insira a série da NF");
-            Console.Write("> ");
-            string serie = Console.ReadLine()?.Trim() ?? "";
-
-            if (string.IsNullOrWhiteSpace(serie))
-            {
-                Console.WriteLine("> Erro: série inválida.");
-                return;
-            }
-
             Console.WriteLine("Agora, insira a competência (AAAA-MM)");
             Console.Write("> ");
             string competencia = Console.ReadLine()?.Trim() ?? "";
@@ -42,12 +32,9 @@ namespace NFsys.Core
                 {
                     string nome_arquivo = Path.GetFileName(arquivo);
 
-                    if (nome_arquivo.Length < 44)
-                        return false;
-
                     string chave_acesso = nome_arquivo.Substring(0, 44);
 
-                    return chave_acesso.Substring(20, 2) == "65" && chave_acesso.Substring(22, 3) == serie;
+                    return chave_acesso.Substring(20, 2) == "65";
                 })
                 .ToArray();
 
@@ -81,7 +68,7 @@ namespace NFsys.Core
 
                     var tag_dhEmi = tag_ide.Element(namespace_sefaz + "dhEmi").Value.Substring(0, 7);
 
-                    if (serie.Substring(2, 1) == tag_serie && competencia == tag_dhEmi)
+                    if (competencia == tag_dhEmi)
                     {
                         var tag_dest = xml_nf.Descendants(namespace_sefaz + "dest").FirstOrDefault();
 
@@ -104,14 +91,11 @@ namespace NFsys.Core
 
                         var chave_nf = tag_infNFe.Attribute("Id").Value.Replace("NFe", "");
 
-                        var tag_vNF = decimal.Parse(xml_nf.Descendants(namespace_sefaz + "vNF")
-                            .FirstOrDefault().Value, CultureInfo.InvariantCulture);
-
                         var dados_extraidos = new NotaFiscal
                         {
                             chave = chave_nf,
+                            serie = tag_mod,
                             competencia = tag_dhEmi,
-                            valor = tag_vNF
                         };
 
                         nf_encontradas.Add(dados_extraidos);

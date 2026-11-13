@@ -7,7 +7,7 @@ namespace NFsys.Core.Models
     public class NotaFiscal
     {
         public string chave { get; set; }
+        public string serie { get; set; }
         public string competencia { get; set; }
-        public decimal valor { get; set; }
     }
 }
